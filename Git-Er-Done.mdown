@@ -1,0 +1,21 @@
+# Git 'Er Done!
+
+Version control is a crucial component of any development process, and even more so if you are working in teams. It is so important that I will refuse to work on any project before implementing some kind of version control system, even if it means I have to maintain it on my own. Not only has it saved my ass countless times, it also facilitates and speeds up collaboration for development teams.
+
+[Git](https://git-scm.com/) is my preferred version control system, and after reading this post you will learn:
+
+* How to get your Salesforce code set up in Git
+* How to add version control to your work flow
+* How you can use Git to facilitate collaboration
+
+
+## Getting your Salesforce code on to Git
+
+If you don't have Git set up on your machine, check out these two links first:
+
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
+
+Next pull down the latest version of your code using whichever method you prefer (Mavensmate, Eclipse, Ant, etc. )
+
