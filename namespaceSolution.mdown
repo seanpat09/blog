@@ -60,8 +60,8 @@ var MyController =  {
 
 Now you can stick your javascript in a static resource without having to worry about it working in namespace and non-namespaced orgs.
 
-###Extra Credit
-Here's how I would do this namespacing with Angular:
+###Extra Credit: Possible Local Development?
+Local development is like the holy grail of Salesforce programming. I don't think we'll ever have full-fledged local development, but when it comes to building Javascript heavy pages, there might be some hope. Here's how I would do the namespacing with Angular:
 
 ```
 //SFDCCtrl.js
