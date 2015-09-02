@@ -1,0 +1,167 @@
+# Remote Actions By Any Other Name (Extra Credit: local development?)
+
+While working on a managed package with several developers, dealing with the namespace can be really annoying. Developers (ideally) would not be developing directly in the packaging org, so your team won't have access to the namespace and they'll find themselves trying to figure out how to program more dynamically without hard references to the namespace. This sounds like a good thing, but in practice it can lead to some poor implementation choices, especially when working with Javascript and Remote Actions.
+
+##Flawed Dynamic Namespacing
+
+Salesforce recommends using the {!$RemoteAction} merge field to deal with namespacing. For example, your code might look like this:
+
+```
+    Visualforce.remoting.Manager.invokeAction(
+        '{!$RemoteAction.MyController.doTheThing}',
+        function(result, event) {
+          if (event.status) {
+            handleSuccess();
+          } else {
+            handleRejection(event);
+          }
+        }
+    );
+```
+
+This works great because you don't have to worry about the namespace at all. This code will work in your separate developer org as well as the packaging org. However, since static resources don't support merge fields this has to be done within the Visual Force page inside a script block. It's not a huge deal, but you do lose the benefit of the static resources caching plus it makes your Visual Force page messier.
+
+##Stick it in an object
+
+Instead just stick your namespaced controller in another variable:
+
+```
+(function(){
+    'use strict';
+    var SFDCCtrl = MyNamespace ? MyNamespace.myController : myController
+
+    function myRemoteCall(){
+        SFDCCtrl.doTheThing( function(result, event){
+            if (event.status) {
+              handleSuccess();
+            } else {
+              handleRejection(event);
+            }
+        });
+    }
+}());
+```
+
+In your Visual Force page Salesforce creates global object named after your controller that contains all of your remote actions. If that controller is namespaced, it just wraps that object in an object named after your namespace:
+
+```
+//Namespaced Controller
+var MyNamespace = {
+    MyController : {
+        doTheThing : function(){};
+    }
+}
+
+//Non-namespaced controller
+var MyController =  {
+    doTheThing : function(){};
+}
+```
+
+Now you can stick your javascript in a static resource without having to worry about it working in namespace and non-namespaced orgs.
+
+###Extra Credit
+Here's how I would do this namespacing with Angular:
+
+```
+//SFDCCtrl.js
+(function () {
+    'use strict';
+    angular.module('myModule')
+        .service('SFDCCtrl', SFDCCtrl );
+        function SFDCCtrl(){
+            this.MyController = MyNamespace ? MyNamespace.MyController : MyController;
+        }
+})();
+```
+
+```
+//AController.js
+(function () {
+    'use strict';
+    angular.module('myModule')
+        .controller('AController', AController );
+        AController.$inject = ['SFDCCtrl'];
+        function AController(SFDCCtrl){
+            function myRemoteCall(){
+                SFDCCtrl.MyController.doTheThing( function(result, event){
+                    if (event.status) {
+                      $scope.theThing = result;
+                    } else {
+                      handleRejection(event);
+                    }
+                });
+            }
+        }
+})();
+
+```
+
+
+With the angular example, since your controller is tucked away nicely in its own service, you easily mock your SFDC controller with your tests. But why stop there? Why not mock it for development so you can work locally? With Javascript frameworks like Angular and React, I find myself using less Visual Force, simply using the controller for interactions with the database. This can be frustrating because you know that a majority of your page could be compiled on your machine, but you have to hit the server on every save, which can take several minutes for each request! Take the following super simple example that uses the above angular example:
+
+```
+//MyPage.page
+<apex:page controller="MyController" applyBodyTag="false">
+    <body app="myModule">
+        <div ng-controller="AController">
+            {{theThing}}
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="{!URLFOR($Resource.myAngularApp,'SFDCCtrl.js')}"/>
+    <script src="{!URLFOR($Resource.myAngularApp,'AController.js')}"/>
+</apex:page>
+
+```
+
+This is basically just a regular html/js page wrapped in visualforce (with a few merge field changes):
+
+```
+<html>
+    <body app="myModule">
+        <div ng-controller="AController">
+            {{theThing}}
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="SFDCCtrl.js'"/>
+    <script src="AController.js'"/>
+</html>
+```
+
+Now let's replace the script containing salesforce controller object and replace it with a mock file:
+
+```
+<html>
+    <body app="myModule">
+        <div ng-controller="AController">
+            {{theThing}}
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="SFDCCtrlMOCK.js'"/>
+    <script src="AController.js'"/>
+</html>
+```
+
+```
+//SFDCCtrlMOCK.js
+(function () {
+    'use strict';
+    angular.module('myModule')
+        .service('SFDCCtrl', SFDCCtrl );
+        function SFDCCtrl(){
+            this.MyController = {
+                doTheThing : doTheThing
+            }
+
+            function doTheThing(){
+                //return a mock of whatever you expected Salesforce to return you
+                return 'Athing';
+            }
+        }
+})();
+```
+
+The Salesforce controller is just an interface now that you or someone else can work on separately from the front end. Now you can work on your page locally! Maintaining these mocks might seem like extra work, but you should probably be building these mocks anyway for Javascript unit testing purposes. Also, the time you save not having to deploy to the server every time you save might even outweigh the cost of building the mock files.
