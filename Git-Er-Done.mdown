@@ -59,9 +59,15 @@ Once you've pull down your metadata open up Terminal (or Git Bash if you're usin
 project. This is typically the folder that holds your **src** folder. Run these commands to create your git repository:
 
 ```
-git init //creates the repo
-git add . //adds everything in the folder to the repo
-git commit -m 'current state of production code' //commits code to your repo. You can change the message to whatever you want, but that's what I usually put
+//creates the repo
+git init
+
+//adds everything in the folder to the repo
+git add . 
+
+//commits code to your repo. You can change the message to whatever you want,
+//but this is what I usually put
+git commit -m 'current state of production code' 
 ```
 
 And you're done! Adding your git repository to a remote location is out of scope for this blog post, but I suggest using one of the
@@ -89,8 +95,8 @@ First, create or refresh a sandbox for you to develop in. You want your developm
 //Make sure you're actually in the master branch
 git checkout master 
 
-//Create a new branch and put yourself in it at the same time. myBranch can be named whatever you want. I usually name it
-//after the feauture you're building, or use the story number if you're doing agile
+//Create a new branch and put yourself in it at the same time. myBranch can be named whatever you want.
+//I usually name it after the feauture you're building, or use the story number if you're doing agile
 git checkout -b myBranch
 ```
 
@@ -103,10 +109,12 @@ Commits should be small and descriptive. This makes tracking history, comparing 
 After you make a change, do the following in Terminal:
 
 ```
-//add the file(s) you changed to git. You can also do 'git add .' but I prefer to be explicit to make sure I don't stage something I didn't mean to
+//add the file(s) you changed to git. You can also do 'git add .'
+//but I prefer to be explicit to make sure I don't stage something I didn't mean to
 My-Computer:myProject thisIsMe$ git add src/classes/ContactController.cls 
 
-//View the changes you've staged. This isn't necessary but I do it to make sure I'm only adding what I expected to add
+//View the changes you've staged. This isn't necessary but I do it to make sure
+//I'm only adding what I expected to add
 My-Computer:myProject thisIsMe$ git status
 On branch newFeature
 Changes to be committed:
@@ -161,7 +169,8 @@ Once you complete the hot fix and merge it into your master branch (and then pro
 
 ```
 git checkout newFeature
-//If you want, you can also merge the hot fix into your newFeature branch so that your branch is caught up with master
+//If you want, you can also merge the hot fix into your newFeature branch
+//so that your branch is caught up with master
 git merge hotFix
 ```
 
