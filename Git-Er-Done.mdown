@@ -8,9 +8,7 @@ and speeds up collaboration for development teams.
 [Git](https://git-scm.com/) is my preferred version control system, and after reading this post you will learn:
 
 * How to get your Salesforce code set up in Git
-* How to add version control to your work flow
-* How you can use Git to facilitate collaboration
-
+* How to utilize version control in your development workflow
 
 ## Getting your Salesforce code on to Git
 
@@ -58,4 +56,15 @@ Developers will be working with these metadata types for a majority of their tim
 from version control the most.
 
 Once you've pull down your metadata open up Terminal (or Git Bash if you're using Windows) and navigate to the root folder of your.
-project. This is typically the folder that holds your **src** folder. 
+project. This is typically the folder that holds your **src** folder. Run these commands to create your git repository:
+
+```
+git init //creates the repo
+git add . //adds everything in the folder to the repo
+git commit -m 'current state of production code' //commits code to your repo. You can change the message to whatever you want, but that's what I usually put
+```
+
+And you're done! Adding your git repository to a remote location is out of scope for this blog post, but I suggest using one of the
+following:
+* [BitBucket](https://bitbucket.org/) - Better for consultants because the pricing model is to pay per collaborator with unlimited private repositories
+* [GitHub](https://github.com/) - Better for product developers or those working in industry as you pay per private repo with unlimited collaborators.
