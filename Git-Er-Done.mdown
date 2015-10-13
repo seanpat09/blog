@@ -118,6 +118,7 @@ Changes to be committed:
 My-Computer:myProject thisIsMe$ git commit -m 'my change'
 [newFeature bae2c2d] my change
  1 file changed, 1 insertion(+), 1 deletion(-)
+ ```
 
 ###4. Repeat steps 2 and 3 until the feature is completed (which includes testing)
 Continue to make small changes until you are ready to call the feature complete. This includes any unit testing you need to do as well as any QA/UAT.
@@ -140,6 +141,7 @@ Once it is merged into the master branch, go ahead and deploy the code to your p
 Working in branches gives you more flexibility and facilitates working on separate features simultaneously. Take the following example:
 
 You are tasked with adding a new feature:
+
 ```
 git checkout master
 git checkout -b newFeature
@@ -150,6 +152,7 @@ While you are creating that new feature, the business says there's a bug in prod
 ```
 //Get back into the master branch, which doesn't include any code from the new feature
 git checkout master
+
 //Create a new branch for your hot fix.
 git checkout -b hotFix
 ```
@@ -158,7 +161,6 @@ Once you complete the hot fix and merge it into your master branch (and then pro
 
 ```
 git checkout newFeature
-
 //If you want, you can also merge the hot fix into your newFeature branch so that your branch is caught up with master
 git merge hotFix
 ```
