@@ -80,7 +80,7 @@ following:
 Here's a really basic development workflow for any new feature you are working on:
 
 1. Create a branch off of the master branch (typically named after the feature or story number)
-2. Make a change in the code that you can describe in one sentence without using the word "and" (e.g. Stubbed out controller tests')
+2. Make a change in the code that you can describe in one sentence without using the word "and" (e.g. 'Stubbed out controller tests')
 3. Commit the change to your branch
 4. Repeat steps 2 and 3 until the feature is completed (which includes testing)
 5. Merge into the master branch
