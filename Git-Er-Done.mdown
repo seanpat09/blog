@@ -136,7 +136,7 @@ git merge myChange
 ###6. Deploy the master branch to your Production org.
 Once it is merged into the master branch, go ahead and deploy the code to your production org using whichever method your prefer (your IDE, change set, ant).
 
-##Why create a new branch? Why not just work in master?**
+##Why create a new branch? Why not just work in master?
 Working in branches gives you more flexibility and facilitates working on separate features simultaneously. Take the following example:
 
 You are tasked with adding a new feature:
