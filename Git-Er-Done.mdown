@@ -68,3 +68,102 @@ And you're done! Adding your git repository to a remote location is out of scope
 following:
 * [BitBucket](https://bitbucket.org/) - Better for consultants because the pricing model is to pay per collaborator with unlimited private repositories
 * [GitHub](https://github.com/) - Better for product developers or those working in industry as you pay per private repo with unlimited collaborators.
+
+##Adding Version Control to Your Development Workflow
+
+Here's a really basic development workflow for any new feature you are working on:
+
+1. Create a branch off of the master branch (typically named after the feature or story number)
+2. Make a change in the code that you can describe in one sentence without using the word "and" (e.g. Stubbed out controller tests')
+3. Commit the change to your branch
+4. Repeat steps 2 and 3 until the feature is completed (which includes testing)
+5. Merge into the master branch
+6. Deploy the master branch to your Production org.
+
+Let's break down each of these steps into more detail:
+
+###1. Create a branch off of the master branch (typically named after the feature or story number)
+First, create or refresh a sandbox for you to develop in. You want your development org to mirror your production org as much as possible so that you know that the features you are building will integrate smoothly with what's currently in production. Create a branch off of master with the following commands:
+
+```
+//Make sure you're actually in the master branch
+git checkout master 
+
+//Create a new branch and put yourself in it at the same time. myBranch can be named whatever you want. I usually name it
+//after the feauture you're building, or use the story number if you're doing agile
+git checkout -b myBranch
+```
+
+In your IDE, make sure you are saving files to your sandbox org, not production. You're now ready to start developing!
+
+###2. Make a change in the code that you can describe in one sentence without using the word "and" (e.g. Stubbed out controller tests')
+Commits should be small and descriptive. This makes tracking history, comparing file differences, and reverting code much easier. It's easier to make sense of a bunch of small changes instead of one giant change. Also, if your history is a series of steps you have the flexibility of reverting only certain changes instead of all or nothing.
+
+###3. Commit the change to your branch
+After you make a change, do the following in Terminal:
+
+```
+//add the file(s) you changed to git. You can also do 'git add .' but I prefer to be explicit to make sure I don't stage something I didn't mean to
+My-Computer:myProject thisIsMe$ git add src/classes/ContactController.cls 
+
+//View the changes you've staged. This isn't necessary but I do it to make sure I'm only adding what I expected to add
+My-Computer:myProject thisIsMe$ git status
+On branch newFeature
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   src/classes/ContactController.cls
+
+//Commit the change to Git
+My-Computer:myProject thisIsMe$ git commit -m 'my change'
+[newFeature bae2c2d] my change
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+###4. Repeat steps 2 and 3 until the feature is completed (which includes testing)
+Continue to make small changes until you are ready to call the feature complete. This includes any unit testing you need to do as well as any QA/UAT.
+
+###5. Merge into the master branch
+When you are done, it's time to merge it to the master branch:
+
+```
+//Checkout the branch you are merging into
+git checkout master
+
+//Merge the branch with the feature you've been working on
+git merge myChange
+```
+
+###6. Deploy the master branch to your Production org.
+Once it is merged into the master branch, go ahead and deploy the code to your production org using whichever method your prefer (your IDE, change set, ant).
+
+##Why create a new branch? Why not just work in master?**
+Working in branches gives you more flexibility and facilitates working on separate features simultaneously. Take the following example:
+
+You are tasked with adding a new feature:
+```
+git checkout master
+git checkout -b newFeature
+```
+
+While you are creating that new feature, the business says there's a bug in production that needs to be fixed quickly. So you do the following:
+
+```
+//Get back into the master branch, which doesn't include any code from the new feature
+git checkout master
+//Create a new branch for your hot fix.
+git checkout -b hotFix
+```
+
+Once you complete the hot fix and merge it into your master branch (and then production org), you can just return to work on your new feature as if nothing happened:
+
+```
+git checkout newFeature
+
+//If you want, you can also merge the hot fix into your newFeature branch so that your branch is caught up with master
+git merge hotFix
+```
+
+##New Possibilities
+While version adds some overhead to development process, it also helps you become more productive. Having a history will make debugging issues easier as you'll have a trail of changed in the code when the bug arose. You'll feel more empowered to make changes in the code because if something goes wrong you always have something to revert back to.
+
+Version control also opens the door to new opportunities. In the next post, we'll cover how to use Git to automate deployments and manage collaboration between several developers.
