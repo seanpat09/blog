@@ -1,11 +1,8 @@
 # Git 'Er Done!
 
-Version control is a crucial component of any development process, and even more so if you are working in teams. 
-It is so important that I will refuse to work on any project before implementing some kind of version control system, 
-even if it means I have to maintain it on my own. Not only has it saved my ass countless times, it also facilitates 
-and speeds up collaboration for development teams.
+Version control is a crucial component of any development process and even more so if you are working in a team. It is so important that I will refuse to work on any project before implementing some kind of version control system even if it means I have to maintain it on my own. Not only has it saved my ass countless times, it also facilitates and speeds up collaboration for development teams.
 
-[Git](https://git-scm.com/) is my preferred version control system, and after reading this post you will learn:
+[Git](https://git-scm.com/) is my preferred version control system and after reading this post you will learn:
 
 * How to get your Salesforce code set up in Git
 * How to utilize version control in your development workflow
@@ -18,10 +15,7 @@ https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
 
-Next pull down the metadata that you want to track from your Salesforce production org using whichever method you prefer 
-(Mavensmate, Eclipse, [Ant](http://www.socalledprogrammer.com/2015/01/the-ant-jobs-go-marching.html), etc). 
-We're using pulling the code from production because it is the source of truth of your org. Even if your sandbox has new 
-changes in it, it can be refreshed at any time or never merged into production. Production always takes precedent.
+Next pull down the metadata that you want to track from your Salesforce production org using whichever method you prefer  (Mavensmate, Eclipse, [Ant](http://www.socalledprogrammer.com/2015/01/the-ant-jobs-go-marching.html), etc). We're using pulling the code from production because it is the source of truth of your org. Even if your sandbox has new changes in it, it can be refreshed at any time or never merged into production. Production always takes precedent.
 
 If you're not sure which metadata types you should pull down, I recommend this package.xml file as a default:
 
@@ -48,15 +42,13 @@ If you're not sure which metadata types you should pull down, I recommend this p
         <members>*</members>
         <name>StaticResource</name>
     </types>
-    <version>32.0</version>
+    <version>34.0</version>
 </Package>
 ```
 
-Developers will be working with these metadata types for a majority of their time and thus these will benefit 
-from version control the most.
+Developers will be working with these metadata types for a majority of their time and thus these will benefit from version control the most.
 
-Once you've pull down your metadata open up Terminal (or Git Bash if you're using Windows) and navigate to the root folder of your.
-project. This is typically the folder that holds your **src** folder. Run these commands to create your git repository:
+Once you've pull down your metadata open up Terminal (or Git Bash if you're using Windows) and navigate to the root folder of your project. This is typically the folder that holds your **src** folder. Run these commands to create your git repository:
 
 ```
 //creates the repo
@@ -70,8 +62,7 @@ git add .
 git commit -m 'current state of production code' 
 ```
 
-And you're done! Adding your git repository to a remote location is out of scope for this blog post, but I suggest using one of the
-following:
+And you're done! Adding your git repository to a remote location is out of scope for this blog post, but I suggest using one of the following:
 * [BitBucket](https://bitbucket.org/) - Better for consultants because the pricing model is to pay per collaborator with unlimited private repositories
 * [GitHub](https://github.com/) - Better for product developers or those working in industry as you pay per private repo with unlimited collaborators.
 
@@ -89,7 +80,7 @@ Here's a really basic development workflow for any new feature you are working o
 Let's break down each of these steps into more detail:
 
 ###1. Create a branch off of the master branch (typically named after the feature or story number)
-First, create or refresh a sandbox for you to develop in. You want your development org to mirror your production org as much as possible so that you know that the features you are building will integrate smoothly with what's currently in production. Create a branch off of master with the following commands:
+First, create or refresh a sandbox for you to develop in. You want your development org to mirror your production org as much as possible so that you know that the features you are building will integrate smoothly with what's currently in production. In Terminal, create a branch off of the master branch with the following commands:
 
 ```
 //Make sure you're actually in the master branch
@@ -102,11 +93,11 @@ git checkout -b myBranch
 
 In your IDE, make sure you are saving files to your sandbox org, not production. You're now ready to start developing!
 
-###2. Make a change in the code that you can describe in one sentence without using the word "and" (e.g. Stubbed out controller tests')
+###2. Make a change in the code that you can describe in one sentence without using the word "and"
 Commits should be small and descriptive. This makes tracking history, comparing file differences, and reverting code much easier. It's easier to make sense of a bunch of small changes instead of one giant change. Also, if your history is a series of steps you have the flexibility of reverting only certain changes instead of all or nothing.
 
 ###3. Commit the change to your branch
-After you make a change, do the following in Terminal:
+After you make a (small) change, do the following in Terminal: (I've included the outputs so you know what to expect\)
 
 ```
 //add the file(s) you changed to git. You can also do 'git add .'
@@ -165,7 +156,7 @@ git checkout master
 git checkout -b hotFix
 ```
 
-Once you complete the hot fix and merge it into your master branch (and then production org), you can just return to work on your new feature as if nothing happened:
+Once you complete the hot fix and merge it into your master branch (and then production org), you can just return to work on your new feature as if nothing happened. You don't have to manually remove or add code; Git did it all for you.
 
 ```
 git checkout newFeature
@@ -175,6 +166,6 @@ git merge hotFix
 ```
 
 ##New Possibilities
-While version adds some overhead to development process, it also helps you become more productive. Having a history will make debugging issues easier as you'll have a trail of changed in the code when the bug arose. You'll feel more empowered to make changes in the code because if something goes wrong you always have something to revert back to.
+While version adds some overhead to development process, it also helps you become more productive. Having a history will make debugging issues easier as you'll have a trail of what changed in the code when the bug arose. You'll also feel more empowered to make changes in the code because if something goes wrong you always have something to revert back to.
 
 Version control also opens the door to new opportunities. In the next post, we'll cover how to use Git to automate deployments and manage collaboration between several developers.
