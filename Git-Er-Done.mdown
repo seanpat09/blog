@@ -59,7 +59,7 @@ git add .
 
 //commits code to your repo. You can change the message to whatever you want,
 //but this is what I usually put
-git commit -m 'current state of production code' 
+git commit -m "current state of production code" 
 ```
 
 And you're done! Adding your git repository to a remote location is out of scope for this blog post, but I suggest using one of the following:
@@ -83,11 +83,11 @@ Let's break down each of these steps into more detail:
 First, create or refresh a sandbox for you to develop in. You want your development org to mirror your production org as much as possible so that you know that the features you are building will integrate smoothly with what's currently in production. In Terminal, create a branch off of the master branch with the following commands:
 
 ```
-//Make sure you're actually in the master branch
+//Make sure you are actually in the master branch
 git checkout master 
 
 //Create a new branch and put yourself in it at the same time. myBranch can be named whatever you want.
-//I usually name it after the feauture you're building, or use the story number if you're doing agile
+//I usually name it after the feature you are building, or use the story number if you're doing agile
 git checkout -b myBranch
 ```
 
@@ -97,15 +97,15 @@ In your IDE, make sure you are saving files to your sandbox org, not production.
 Commits should be small and descriptive. This makes tracking history, comparing file differences, and reverting code much easier. It's easier to make sense of a bunch of small changes instead of one giant change. Also, if your history is a series of steps you have the flexibility of reverting only certain changes instead of all or nothing.
 
 ###3. Commit the change to your branch
-After you make a (small) change, do the following in Terminal: (I've included the outputs so you know what to expect\)
+After you make a (small) change, do the following in Terminal: (I've included the outputs so you know what to expect)
 
 ```
-//add the file(s) you changed to git. You can also do 'git add .'
-//but I prefer to be explicit to make sure I don't stage something I didn't mean to
+//add the file(s) you changed to git. You can also do git add .
+//but I prefer to be explicit
 My-Computer:myProject thisIsMe$ git add src/classes/ContactController.cls 
 
-//View the changes you've staged. This isn't necessary but I do it to make sure
-//I'm only adding what I expected to add
+//View the changes you staged. Not necessary but I do it to make sure
+//I only add what I expected to add
 My-Computer:myProject thisIsMe$ git status
 On branch newFeature
 Changes to be committed:
@@ -149,19 +149,17 @@ git checkout -b newFeature
 While you are creating that new feature, the business says there's a bug in production that needs to be fixed quickly. So you do the following:
 
 ```
-//Get back into the master branch, which doesn't include any code from the new feature
+//Get back into the master branch, which does not include any code from the new feature
 git checkout master
 
 //Create a new branch for your hot fix.
 git checkout -b hotFix
 ```
 
-Once you complete the hot fix and merge it into your master branch (and then production org), you can just return to work on your new feature as if nothing happened. You don't have to manually remove or add code; Git did it all for you.
+Once you complete the hot fix and merge it into your master branch (and then production org), you can just return to work on your new feature as if nothing happened. You don't have to manually remove or add code; Git did it all for you. If you want, you can also merge the hot fix into your newFeature branch so that your branch is caught up with master.
 
 ```
 git checkout newFeature
-//If you want, you can also merge the hot fix into your newFeature branch
-//so that your branch is caught up with master
 git merge hotFix
 ```
 
