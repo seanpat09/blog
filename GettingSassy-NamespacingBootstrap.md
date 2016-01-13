@@ -4,7 +4,7 @@
 
 This isn't the case in Salesforce Lightning, but there are plenty of organizations that are not ready for the transition to the new interface. I knew that the answer to this problem was just to namespace the Bootstrap, but the execution involved running commands with Ruby, Sass, and Node, which for a while was just non-Salesforce magic that I dared not touch. For a few years I just avoided using Bootstrap in Salesforce, opting to just style everything myself. If you've ever felt this way, then this post is the hand holding you might be looking for.
 
-##Tl;Dr
+##TL;DR
 If you really don't want to do this, here's the namespaced CSS that you can just include in your project now:
 https://gist.github.com/seanpat09/6207236541d701da40ce
 
@@ -18,7 +18,8 @@ Run all these commands in Terminal
 
 
 ###Install the dependencies on your machine
-1. Make sure you have Ruby installed
+####1. Make sure you have Ruby installed
+
 Ruby comes pre-installed on Macs, but here's how you check for sure:
 
 ```
@@ -34,7 +35,7 @@ Your-Macintosh:~ seancuevo$ ruby -v
 
 Then you need to install [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 
-2. Install [Sass](http://sass-lang.com/install)
+####2. Install [Sass](http://sass-lang.com/install)
 ```
 gem install sass
 ```
@@ -43,12 +44,12 @@ If you see any errors, trying running this:
 sudo gem install sass
 ```
 
-3. Install [nvm](https://github.com/creationix/nvm)
+####3. Install [nvm](https://github.com/creationix/nvm)
 ```
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
 ```
 
-4. Install [node.js](https://nodejs.org/en/) using nvm
+####4. Install [node.js](https://nodejs.org/en/) using nvm
 ```
 nvm install 5.0
 ```
@@ -62,17 +63,18 @@ You now have all the tools necessary to namespace Bootstrap!
 ###Compile a namespaced version of Bootstrap
 You can run the following commands from whatever directory you want, but just make sure to stay in that directory as all the files will be written to the directory and all of the commands will be relative to it.
 
-1. Start node:
+####1. Start node:
 ```
 nvm use 5.0
 ```
 
-2. Install Bootstrap-sass
+####2. Install Bootstrap-sass
 ```
 npm install bootstrap-sass
 ```
 This creates a folder called **node_modules** in your current directory. This contains files necessary to compile bootstrap 
-3. Create the .scss file
+
+####3. Create the .scss file
 In the same directory, create a file called sfdcBootstrap.scss with the following contents
 ```
 .sfdcBootstrap{
@@ -83,14 +85,14 @@ In the same directory, create a file called sfdcBootstrap.scss with the followin
 
 This will create the bootstrap css file where only styles that descend from the .sfdcBootstrap class are affected by Bootstrap. You can name the class whatever you want, just make sure to change it in the .scss file.
 
-4. Compile your css file with Sass
+####4. Compile your css file with Sass
 In the same directory, run this command in Terminal:
 ```
 sass sfdcBootstrap.scss sfdcBootstrap.css
 ```
 You should now have a file called sfdcBootstrap.css in your directory.
 
-5. Build your static resource
+####5. Build your static resource
 Run this command to open your current directory in Finder:
 ```
 open .
@@ -116,6 +118,7 @@ Here is a sample Visual Force page using the resource:
 </apex:page>
 ```
 Everything outside of the sfdcBootstrap div (which includes the sidebar and header) will NOT be formatted with Bootstrap
-![Namespaced Boostrap]http://i.imgur.com/bvLb6n0.png
+
+![Namespaced Bootstrap](http://i.imgur.com/bvLb6n0.png)
 
 
