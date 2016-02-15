@@ -26,11 +26,4 @@ Cutting out features and taking time to clean things up may seem like a hit to b
 
 3. **Establish a culture of good code:** This is a little out of scope for this post, but don't let people get away with bad code. Technical debt should be a conscious decision, not a lazy one.
 
-Don't let technical debt destroy your team. Just like financial debt, technical debt should be used as leverage to create long term value, not as a short cut to instant gratification.
-
-
-
-
-
-
-
+Just like financial debt, technical debt should be treated with balance. When used correctly, it can be leveraged to produce value quickly and promote long term growth. When abused, it can create toxic build up that will eventualy paralyze a project and possibly even lead to the downfall of the company. Take steps now to manage your technical debt it before you lose not only control of the project, but also the key members of your team.
