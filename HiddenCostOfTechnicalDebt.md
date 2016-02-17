@@ -6,7 +6,7 @@ Technical debt often rears its head during overtime nearing a project deadline. 
 
 But then the next deadline comes and it happens again. And again. Instead of allowing for time to fix the issues from before, the developers are pushed to keep tacking on more garbage to the heaping pile of garbage that is the code base. Any blocking bug fixes, let alone features, become day long tasks because no one is quite sure how everything works anymore because everything is all over the place.
 
-Working somewhere like this, to use a technical term, sucks. Bad code is no longer the exception, but the norm. A sense of disgust takes place of any pride in the project. Developers no longer feel like their growing, but just fighting to get around the mess they made. An us vs. them mentality grows between the development team and management.
+Working somewhere like this, to use a technical term, sucks. Bad code is no longer the exception, but the norm. A sense of disgust takes place of any pride in the project. Developers no longer feel like their growing, but just fighting to get around the mess they made. An Us vs. Them mentality grows between the development team and management.
 
 Cutting out features and taking time to clean things up may seem like a hit to both progress and budget, but technical debt costs the most when the people that are able to pay it down say "fuck it" and leave. 
 
@@ -16,7 +16,7 @@ Cutting out features and taking time to clean things up may seem like a hit to b
 
 2. **Allow for time to pay back technical debt:** After something is delivered, take a sprint/iteration/etc. to clean things up before diving into the next project. It's good for the code and a productive way to do a retrospective on what was just accomplished.
 
-3. **Don't lie about deadlines:** This might seem obvious, but I've seen managers do this. These aren't dinner reservations, don't expect them to be late and say they have one month when they actually have five weeks. Instead, you'll get something that hobbles across the finish line of one month deadline and then a slew of bug fixes that'll probably break during the last week.
+3. **Don't lie about deadlines:** This might seem obvious, but I've seen managers do this. These aren't dinner reservations, don't expect them to be late and say they have one month when they actually have five weeks. Instead, you'll get something that hobbles across the finish line at the one month deadline and then the last week wilil consist of a slew of bug fixes that'll probably break other things.
 
 ##What you can do if you are a developer
 
