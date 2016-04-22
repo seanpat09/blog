@@ -11,7 +11,7 @@ The less you speak, the more it will seem like you're not doing your job. Talk a
 
 By now, you should have realized I'm being sarcastic and if any of this sounds familiar, then you are doing it wrong. 
 
-Daily stand-ups are a common practice in many technology companies, but I have rarely seen it done right. It usually turns into people trying to justify that they are busy, devolving into a 30 minute affair of no value. However, on the Galvanize Software team, our daily stand-up is never longer than 10 minutes and even that is a stretch. Here's a few ground rules that we've come up with for ours:
+Daily stand-ups are a common practice in many technology companies, but I have rarely seen it done right. It usually turns into people trying to justify that they are busy, devolving into a 30 minute affair of no value. So when I joined the Galvanize Software team, I was surprised that our daily stand-up never lasted longer than 10 minutes. Here's a few ground rules that we have come up with for ours:
 
 * Everyone should be standing, encouraging a short meeting
 * The participants should all be on the same team, in order to keep the meeting relevant to everyone
@@ -21,7 +21,7 @@ Daily stand-ups are a common practice in many technology companies, but I have r
 * If your stand-up is more than 6 people, you should consider breaking it up or it will get too long
 * If conversation goes off topic, we say "Pancakes!" and we all immediately know to stop (don't ask)
 
-The best thing that I have learned is that it is OK to have no update. It's better to have no update than to spew nonsense for a few minutes in order to seem busy. No one doubts that anyone is slacking off, and even if they did, the daily stand-up meeting wouldn't be the place to address that anyway.
+The best thing that I have learned is that it is OK to have no update. It is better to have no update than to spew nonsense for a few minutes in order to seem busy. No one doubts that anyone is slacking off, and even if they did, the daily stand-up meeting wouldn't be the place to address that anyway.
 
 A short stand up is meaningful because it provides context and direction for the rest of the day. A long stand up just leaves everyone frustrated and sluggish, wasting even more time.
 
