@@ -11,7 +11,9 @@ The less you speak, the more it will seem like you're not doing your job. Talk a
 
 By now, you should have realized I'm being sarcastic and if any of this sounds familiar, then you are doing it wrong. 
 
-Daily stand-ups are a common practice in many technology companies, but I have rarely seen it done right. It usually turns into people trying to justify that they are busy, devolving into a 30 minute affair of no value. So when I joined the Galvanize Software team, I was surprised that our daily stand-up never lasted longer than 10 minutes. Here's a few ground rules that we have come up with for ours:
+Daily stand-ups are a common practice in many technology companies, but I have rarely seen it done right. It usually turns into people trying to justify that they are busy, devolving into a 30 minute affair of no value. But when I joined the Galvanize Software team, I was surprised that our daily stand-up never lasted longer than 10 minutes. 
+
+Here's a few ground rules that we have come up with that might help yours:
 
 * Everyone should be standing, encouraging a short meeting
 * The participants should all be on the same team, in order to keep the meeting relevant to everyone
@@ -23,8 +25,7 @@ Daily stand-ups are a common practice in many technology companies, but I have r
 
 The best thing that I have learned is that it is OK to have no update. It is better to have no update than to spew nonsense for a few minutes in order to seem busy. No one doubts that anyone is slacking off, and even if they did, the daily stand-up meeting wouldn't be the place to address that anyway.
 
-A short stand up is meaningful because it provides context and direction for the rest of the day. A long stand up just leaves everyone frustrated and sluggish, wasting even more time.
-
-Long meetings in general are deceptive. They give the illusion of productivity when they are usually anything but productive. So start cutting them short or stop having them at all. If you have to, stop the stand-up immediately at 10 minutes, even if everyone didn't get to speak. Eventually you and your team will get used to it and save time, time you could be using doing something instead of just talking about it.
+A short stand up is meaningful because it provides context and direction for the rest of the day. A long stand up just leaves everyone frustrated and sluggish, giving the illusion of productivity when they are usually anything but productive. 
+So start cutting your daily stand up short short or stop having them at all. If you have to, stop the stand-up immediately at 10 minutes, even if everyone didn't get to speak. Eventually you and your team will get used to it and save time, time you could be using doing something instead of just talking about it.
 
 For more ramblings from Sean Cuevo, visit http://socalledprogrammer.com/
